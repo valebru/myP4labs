@@ -1,0 +1,16 @@
+mc_mgrp_create 1
+mc_node_create 0 0 
+mc_node_associate 1 0 
+table_add IngressPipeImpl.l2_unicast_table IngressPipeImpl.set_output_port 00:00:00:00:30:00 => 0
+table_add IngressPipeImpl.l2_unicast_table IngressPipeImpl.set_output_port 00:00:00:00:01:01 => 1
+table_add IngressPipeImpl.l2_unicast_table IngressPipeImpl.set_output_port 00:00:00:00:02:01 => 2
+table_add IngressPipeImpl.my_mac_addresses_table NoAction 00:00:00:00:03:00 0
+table_add IngressPipeImpl.my_mac_addresses_table NoAction 00:00:00:00:03:01 0
+table_add IngressPipeImpl.my_mac_addresses_table NoAction 00:00:00:00:03:02 0
+table_add IngressPipeImpl.l3_forwarding_table IngressPipeImpl.set_next_hop_wTun 192.168.0.0/24 => 00:00:00:00:02:01 1 2
+table_add IngressPipeImpl.l3_forwarding_table IngressPipeImpl.set_next_hop_wTun 10.0.0.0/24 => 00:00:00:00:01:01 1 1
+table_add IngressPipeImpl.l3_forwarding_table NoAction 172.16.0.0/24 0
+table_add IngressPipeImpl.myTunnel_table NoAction 3 0
+table_add IngressPipeImpl.tun_forwarding_table IngressPipeImpl.set_output_port 1 => 1
+table_add IngressPipeImpl.tun_forwarding_table IngressPipeImpl.set_output_port 2 => 2
+table_add IngressPipeImpl.arp_cache_table IngressPipeImpl.set_next_hop 172.16.0.30 => 00:00:00:00:30:00 0

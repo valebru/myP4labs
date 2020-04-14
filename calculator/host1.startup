@@ -1,0 +1,7 @@
+ip link set eth0 up
+ip link set address 00:00:00:00:00:01 dev eth0
+ip addr add 10.0.0.1/24 dev eth0 
+
+echo "a possible path with send.py is [1 1 1 2 0]"
+echo "a possible path with send.py is [1 2 0]"
+echo "at the end check the ttl, in host2 run receive.py"

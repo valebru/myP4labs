@@ -1,0 +1,7 @@
+ip link set eth0 up
+ip link set address 00:00:00:00:30:00 dev eth0
+ip addr add 172.16.0.30/24 dev eth0 
+
+ip route add default via 172.16.0.1
+
+arp -s 172.16.0.1 00:00:00:00:03:00
